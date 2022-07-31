@@ -1,0 +1,31 @@
+version: '3'
+
+networks:
+  trade-bot-net:
+    driver: bridge
+
+services:
+  trader-bot:
+    build: .
+    depends_on:
+      - redis
+    volumes:
+      - ./:/app
+    environment:
+      - BINANCE_API_KEY=${BINANCE_API_KEY}
+      - BINANCE_API_SECRET=${BINANCE_API_SECRET}
+      - REDIS_HOST=trade-bot-redis
+      - REDIS_PORT=6379
+    networks:
+      - trade-bot-net
+
+  redis:
+    image: redis:latest
+    container_name: trade-bot-redis
+    ports:
+      - '6379:6379'
+    command: redis-server
+    volumes:
+      - ./data/cache:/data
+    networks:
+      - trade-bot-net

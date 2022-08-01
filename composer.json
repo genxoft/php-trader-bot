@@ -1,5 +1,16 @@
 {
     "name": "genxoft/tradebot",
+    "description": "Example trading bot",
+    "keywords": ["php", "binance", "trading", "trade-bot"],
+    "type": "project",
+    "authors": [
+        {
+            "name": "Simon Rodin",
+            "email": "master@genx.ru"
+        }
+    ],
+    "license": "MIT",
+    "minimum-stability": "stable",
     "require": {
         "php": "~8.1",
         "ext-pdo": "*",
